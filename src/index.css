@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-hand: "Caveat", cursive;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0c0709;
+  --color-plum: #1c0f16;
+  --color-plum-light: #2a1420;
+  --color-rose: #c98a95;
+  --color-rose-dust: #a86b78;
+  --color-blush: #e8b9c0;
+  --color-blush-light: #f3d6da;
+  --color-hotpink: #e83d7a;
+  --color-paper: #f6ece9;
+  --color-paper-dim: #ece0dc;
+  --color-gold: #d9a441;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-hotpink);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose-dust);
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.glow-text {
+  text-shadow: 0 0 24px rgba(232, 61, 122, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
